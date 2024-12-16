@@ -1,12 +1,11 @@
 defmodule AdventOfCode.Year2024.Day1 do
-  def day1() do
+  def day1 do
     [list1, list2] =
-      File.stream!("/home/lucas-cross/advent-of-code/advent_of_code/lib/2024/day1/input.txt")
+      File.stream!("./lib/2024/day1/input.txt")
       |> Enum.reduce([[], []], fn line, [acc1, acc2] ->
         [col1, col2] =
           line
-          |> String.trim()
-          |> String.split(~r/\s+/)
+          |> String.split()
 
         [acc1 ++ [String.to_integer(col1)], acc2 ++ [String.to_integer(col2)]]
       end)
@@ -15,7 +14,7 @@ defmodule AdventOfCode.Year2024.Day1 do
     result =
       Enum.zip(list1, list2)
       |> Enum.map(fn {x, y} -> abs(x - y) end)
-      |> Enum.reduce(fn distance, acc -> acc + distance end)
+      |> Enum.sum()
 
     IO.puts("Resultado: #{result}")
   end
