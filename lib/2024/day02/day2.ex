@@ -48,4 +48,37 @@ defmodule AdventOfCode.Year2024.Day2 do
 
   defp check_decreasing([_]), do: true
   defp check_decreasing(_), do: false
+
+  def day2_2 do
+    reports =
+      File.stream!("./lib/2024/day02/input.txt")
+      |> Enum.map(fn line ->
+        line
+        |> String.trim()
+        |> String.split()
+        |> Enum.map(&String.to_integer(&1))
+      end)
+
+    counter =
+      reports
+      |> Enum.reduce(0, fn report, acc ->
+        if safe_with_problem_dampener?(report), do: acc + 1, else: acc
+      end)
+
+    IO.puts("Result: #{counter}")
+  end
+
+  defp safe_with_problem_dampener?(report) do
+    if valid_diff(report) && valid_trend(report) do
+      true
+    else
+      Enum.reduce_while(0..(length(report) - 1), false, fn level, _acc ->
+        new_report = List.delete_at(report, level)
+
+        if valid_diff(new_report) && valid_trend(new_report),
+          do: {:halt, true},
+          else: {:cont, false}
+      end)
+    end
+  end
 end
