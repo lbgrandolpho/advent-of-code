@@ -1,21 +1,18 @@
 # AdventOfCode
 
-**TODO: Add description**
+Completed puzzles from [Advent of Code](https://adventofcode.com/) in Elixir Language.
 
-## Installation
+## Executing
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `advent_of_code` to your list of dependencies in `mix.exs`:
+To execute a puzzle solution, run `iex -S mix` and call the function related to the desired puzzle.
+The result of the puzzle will be printed out on the shell, like this:
 
-```elixir
-def deps do
-  [
-    {:advent_of_code, "~> 0.1.0"}
-  ]
-end
+### Example
+
+```sh
+iex -S mix
+AdventOfCode.Year2024.Day1.day1_1()
+
+Result: 2113135
+:ok
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/advent_of_code>.
-

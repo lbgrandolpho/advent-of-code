@@ -16,7 +16,7 @@ defmodule AdventOfCode.Year2024.Day1 do
       |> Enum.map(fn {x, y} -> abs(x - y) end)
       |> Enum.sum()
 
-    IO.puts("Resultado: #{result}")
+    IO.puts("Result: #{result}")
   end
 
   def day1_2 do
@@ -39,6 +39,6 @@ defmodule AdventOfCode.Year2024.Day1 do
       |> Enum.map(&(&1 * Map.get(count_list1, &1, 0) * Map.get(count_list2, &1, 0)))
       |> Enum.sum()
 
-    IO.puts("Resultado: #{result}")
+    IO.puts("Result: #{result}")
   end
 end
